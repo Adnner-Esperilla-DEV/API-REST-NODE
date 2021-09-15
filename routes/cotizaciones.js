@@ -4,7 +4,7 @@ const { crearCotizacion,
     obtenerCotizaciones,
     obtenerCotizacion, 
     actualizarCotizacion,
-    EliminarCotizacion} = require('../controllers/Cotizaciones');
+    EliminarCotizacion} = require('../controllers/cotizaciones');
 const { existeCotizacionPorId, existeUsuarioPorId, existeTipoVehiculoPorId, existeGruaPorId, existeFletePorId } = require('../helpers/db-validators');
 const { validarJWT,validarCampos,esAdminRole } = require('../middlewares');
 const router = Router();
