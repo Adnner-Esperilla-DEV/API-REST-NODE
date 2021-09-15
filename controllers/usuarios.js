@@ -43,7 +43,7 @@ const usuariosPut = async(req,res=response)=>{
         resto.password=bcryptjs.hashSync(password,salt);
     }
     //ACTUALIZAR en BD
-    const usuario = await Usuario.findByIdAndUpdate(id,resto);
+    const usuario = await Usuario.findByIdAndUpdate(id,resto,{new :true });
     res.json(usuario)
 }
 const usuariosPath = (req,res)=>{

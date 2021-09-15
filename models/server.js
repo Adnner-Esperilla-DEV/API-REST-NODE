@@ -5,8 +5,18 @@ class Server {
     constructor(){
         this.app= express();
         this.port=process.env.PORT;
-        this.usuariosPath='/api/usuarios'
-        this.authPath='/api/auth'
+
+        this.paths= {
+            auth:      '/api/auth',
+            buscar: '/api/buscar',
+            usuarios : '/api/usuarios',
+            tipoVehiculos: '/api/tipo_vehiculos',
+            gruas: '/api/gruas',
+            fletes: '/api/fletes',
+            cotizaciones: '/api/cotizaciones',
+            servicios : '/api/servicios',
+            imagenes: '/api/imagenes'
+        }
         //Conectar a BD
         this.conectarDB();
         //Middlewares 
@@ -26,8 +36,16 @@ class Server {
         this.app.use(express.static('public'));
     }
     routes(){
-        this.app.use(this.usuariosPath,require('../routes/usuarios'));
-        this.app.use(this.authPath,require('../routes/auth'));
+        this.app.use(this.paths.auth,require('../routes/auth'));
+        this.app.use(this.paths.buscar,require('../routes/buscar'));
+        this.app.use(this.paths.usuarios,require('../routes/usuarios'));
+        this.app.use(this.paths.tipoVehiculos,require('../routes/tipo_vehiculos'));
+        this.app.use(this.paths.gruas,require('../routes/gruas'));
+        this.app.use(this.paths.fletes,require('../routes/fletes'));
+        this.app.use(this.paths.cotizaciones,require('../routes/cotizaciones'));
+        this.app.use(this.paths.servicios,require('../routes/servicios'));
+        this.app.use(this.paths.imagenes,require('../routes/imagenes'));
+        
     }
     listen(){
         this.app.listen(this.port, ()=>{
