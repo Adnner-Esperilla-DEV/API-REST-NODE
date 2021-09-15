@@ -4,7 +4,7 @@ const { crearImagen,
     obtenerImagenes,
     obtenerImagen, 
     actualizarImagen,
-    EliminarImagen} = require('../controllers/Imagenes');
+    EliminarImagen} = require('../controllers/imagenes');
 const { existeImagenPorId } = require('../helpers/db-validators');
 const { validarJWT,validarCampos,esAdminRole } = require('../middlewares');
 
