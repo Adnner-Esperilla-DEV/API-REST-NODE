@@ -82,19 +82,6 @@ const buscarImagenes = async(termino='',res=response) => {
             results: 'Solo se acepta ID de cotizacion valido'
         });
     }
-
-    const regex = termino;
-    const cotizaciones = await Cotizacion.find({ lote: regex,vin: regex})
-    const imagenes  = await Imagen.find({
-        $or : [{...cotizaciones.map(cotizacion =>({
-                cotizacion: cotizacion._id
-            }))},
-            ],
-            $and : [{estado : true}]
-        }).populate('cotizacion',['lote','vin']);
-        res.json({
-            results: imagenes
-        });
 }
 
 const buscarCortizaciones = async(termino='',res=response) => {
